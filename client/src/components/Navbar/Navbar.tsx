@@ -6,7 +6,7 @@ export default function Navbar() {
       <div className="text-lg">Shopa</div>
       <ul className="flex gap-2 hover:text-white">
         <li>
-          <Link to=''>Cart</Link>
+          <Link to='/'>Cart</Link>
         </li>
         <li>
           <Link to='/signin'>Sign In</Link>
