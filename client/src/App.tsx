@@ -1,19 +1,22 @@
-import { useState } from 'react'
-import Navbar from './components/Navbar/Navbar'
-import Footer from './components/Footer/Footer'
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home/Home";
+import Signin from "./pages/SignIn/Signin";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <Navbar/>
-      <main>
-        main
-      </main>
-      <Footer/>
+      <Navbar />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signin" element={<Signin />} />
+        </Routes>
+      </BrowserRouter>
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
