@@ -3,16 +3,17 @@ import dotenv from 'dotenv';
 import { sampleProducts } from "./data";
 import mongoose from "mongoose";
 import cors from "cors";
+import {ProductsRouters} from '../src/routes/Products.route';
+import { OrdersRouters } from "./routes/Orders.route";
+import { SeedsRouters } from "./routes/Seeds.route";
+import { UsersRouters } from "./routes/Users.route";
+import { KeysRouters } from "./routes/Keys.route";
 dotenv.config()
 
 /** constants */
 const app = express()
 const MONGO_URL = process.env.MONGO_URL || 'mongodb://localhost/shopo'
 const PORT:number = parseInt((process.env.PORT) as string,10)
-
-app.get('/api/products',(req:Request,res:Response)=>{
-    res.json(sampleProducts);
-})
 
 
 /** middlewares  */
@@ -22,6 +23,13 @@ app.use(cors({
     credentials:true,
     origin: ['http://localhost:5173']
 }))
+
+/** routes  */
+app.use('/api/v1/products',ProductsRouters)
+app.use('/api/v1/orders', OrdersRouters)
+app.use('/api/v1/seeds', SeedsRouters)
+app.use('/api/v1/users', UsersRouters)
+app.use('/api/v1/keys', KeysRouters)
 
 
 /* connect to Mongodb */
