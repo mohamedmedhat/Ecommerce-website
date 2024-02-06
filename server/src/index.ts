@@ -2,6 +2,7 @@ import express , { Request,Response } from "express";
 import dotenv from 'dotenv';
 import { sampleProducts } from "./data";
 import mongoose from "mongoose";
+import cors from "cors";
 dotenv.config()
 
 /** constants */
@@ -15,7 +16,12 @@ app.get('/api/products',(req:Request,res:Response)=>{
 
 
 /** middlewares  */
-
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+app.use(cors({
+    credentials:true,
+    origin: ['http://localhost:5173']
+}))
 
 
 /* connect to Mongodb */
