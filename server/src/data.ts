@@ -1,6 +1,8 @@
 import bcrypt from 'bcryptjs';
+import { Product } from './models/Product.model';
+import { User } from './models/User.model';
 
-export const sampleProducts= [
+export const sampleProducts: Product[]=[
   {
     name: 'Nike Slim shirt',
     slug: 'nike-slim-shirt',
@@ -51,7 +53,7 @@ export const sampleProducts= [
   },
 ]
 
-export const sampleUsers= [
+export const sampleUsers: User[]= [
   {
     name: 'Joe',
     email: 'admin@example.com',
