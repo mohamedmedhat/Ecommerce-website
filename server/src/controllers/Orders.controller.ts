@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
-import { OrderModel } from "../models/Order.model";
+import { Order, OrderModel } from "../models/Order.model";
 import { Product } from "../models/Product.model";
 
 // [get] http://localhost:PORT/api/v1/orders/mine
@@ -38,7 +38,7 @@ export const CreateOrder = asyncHandler(async (req: Request, res: Response) => {
       taxPrice: req.body.taxPrice,
       totalPrice: req.body.totalPrice,
       user: req.user._id,
-    });
+    } as Order);
     res.status(201).json({ message: "Order Created", order: createdOrder });
   }
 });
